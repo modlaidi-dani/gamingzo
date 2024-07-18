@@ -1,0 +1,292 @@
+[2024-07-18 16:44:56 +0200] [166108] [INFO] Starting gunicorn 22.0.0
+[2024-07-18 16:44:56 +0200] [166108] [INFO] Listening at: http://127.0.0.1:8000 (166108)
+[2024-07-18 16:44:56 +0200] [166108] [INFO] Using worker: sync
+[2024-07-18 16:44:56 +0200] [166109] [INFO] Booting worker with pid: 166109
+[2024-07-18 16:44:56 +0200] [166122] [INFO] Booting worker with pid: 166122
+[2024-07-18 16:44:56 +0200] [166134] [INFO] Booting worker with pid: 166134
+[2024-07-18 16:44:56 +0200] [166135] [INFO] Booting worker with pid: 166135
+[2024-07-18 16:44:56 +0200] [166136] [INFO] Booting worker with pid: 166136
+[2024-07-18 16:44:56 +0200] [166137] [INFO] Booting worker with pid: 166137
+[2024-07-18 16:44:56 +0200] [166149] [INFO] Booting worker with pid: 166149
+[2024-07-18 16:44:57 +0200] [166161] [INFO] Booting worker with pid: 166161
+[2024-07-18 16:44:57 +0200] [166185] [INFO] Booting worker with pid: 166185
+[2024-07-18 16:44:57 +0200] [166197] [INFO] Booting worker with pid: 166197
+[2024-07-18 16:44:57 +0200] [166220] [INFO] Booting worker with pid: 166220
+[2024-07-18 16:44:57 +0200] [166221] [INFO] Booting worker with pid: 166221
+[2024-07-18 16:44:57 +0200] [166234] [INFO] Booting worker with pid: 166234
+[2024-07-18 16:44:57 +0200] [166235] [INFO] Booting worker with pid: 166235
+[2024-07-18 16:44:57 +0200] [166247] [INFO] Booting worker with pid: 166247
+[2024-07-18 16:44:57 +0200] [166248] [INFO] Booting worker with pid: 166248
+[2024-07-18 16:44:57 +0200] [166249] [INFO] Booting worker with pid: 166249
+[2024-07-18 16:44:57 +0200] [166250] [INFO] Booting worker with pid: 166250
+[2024-07-18 16:44:57 +0200] [166263] [INFO] Booting worker with pid: 166263
+[2024-07-18 16:44:57 +0200] [166265] [INFO] Booting worker with pid: 166265
+[2024-07-18 16:44:57 +0200] [166278] [INFO] Booting worker with pid: 166278
+[2024-07-18 16:44:57 +0200] [166281] [INFO] Booting worker with pid: 166281
+[2024-07-18 16:44:57 +0200] [166282] [INFO] Booting worker with pid: 166282
+[2024-07-18 16:44:57 +0200] [166286] [INFO] Booting worker with pid: 166286
+[2024-07-18 16:44:57 +0200] [166312] [INFO] Booting worker with pid: 166312
+[2024-07-18 16:45:35 +0200] [166108] [INFO] Handling signal: int
+[2024-07-18 14:45:35 +0000] [166109] [INFO] Worker exiting (pid: 166109)
+[2024-07-18 14:45:35 +0000] [166134] [INFO] Worker exiting (pid: 166134)
+[2024-07-18 14:45:35 +0000] [166137] [INFO] Worker exiting (pid: 166137)
+[2024-07-18 14:45:35 +0000] [166234] [INFO] Worker exiting (pid: 166234)
+[2024-07-18 14:45:35 +0000] [166122] [INFO] Worker exiting (pid: 166122)
+[2024-07-18 14:45:35 +0000] [166149] [INFO] Worker exiting (pid: 166149)
+[2024-07-18 14:45:35 +0000] [166161] [INFO] Worker exiting (pid: 166161)
+[2024-07-18 14:45:35 +0000] [166220] [INFO] Worker exiting (pid: 166220)
+[2024-07-18 14:45:35 +0000] [166136] [INFO] Worker exiting (pid: 166136)
+[2024-07-18 14:45:35 +0000] [166135] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 197, in handle_quit
+    time.sleep(0.1)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 198, in handle_quit
+    sys.exit(0)
+SystemExit: 0
+[2024-07-18 14:45:35 +0000] [166197] [INFO] Worker exiting (pid: 166197)
+[2024-07-18 14:45:35 +0000] [166185] [INFO] Worker exiting (pid: 166185)
+[2024-07-18 14:45:35 +0000] [166135] [INFO] Worker exiting (pid: 166135)
+[2024-07-18 14:45:35 +0000] [166265] [INFO] Worker exiting (pid: 166265)
+[2024-07-18 14:45:35 +0000] [166263] [INFO] Worker exiting (pid: 166263)
+[2024-07-18 14:45:35 +0000] [166312] [INFO] Worker exiting (pid: 166312)
+[2024-07-18 14:45:35 +0000] [166278] [INFO] Worker exiting (pid: 166278)
+[2024-07-18 14:45:35 +0000] [166286] [INFO] Worker exiting (pid: 166286)
+[2024-07-18 14:45:35 +0000] [166281] [INFO] Worker exiting (pid: 166281)
+[2024-07-18 14:45:35 +0000] [166247] [INFO] Worker exiting (pid: 166247)
+[2024-07-18 14:45:35 +0000] [166221] [INFO] Worker exiting (pid: 166221)
+[2024-07-18 14:45:35 +0000] [166282] [INFO] Worker exiting (pid: 166282)
+[2024-07-18 14:45:35 +0000] [166250] [INFO] Worker exiting (pid: 166250)
+[2024-07-18 14:45:35 +0000] [166248] [INFO] Worker exiting (pid: 166248)
+[2024-07-18 14:45:35 +0000] [166249] [INFO] Worker exiting (pid: 166249)
+[2024-07-18 14:45:35 +0000] [166235] [INFO] Worker exiting (pid: 166235)
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166312) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166282) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166263) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166136) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166286) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166197) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166247) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166221) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166135) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166281) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166122) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166235) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166278) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166149) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166137) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166249) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166134) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166161) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166220) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166248) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166234) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166109) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166250) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166265) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [ERROR] Worker (pid:166185) was sent SIGINT!
+[2024-07-18 16:45:35 +0200] [166108] [INFO] Shutting down: Master
+[2024-07-18 16:45:37 +0200] [166913] [INFO] Starting gunicorn 22.0.0
+[2024-07-18 16:45:37 +0200] [166913] [INFO] Listening at: http://127.0.0.1:8000 (166913)
+[2024-07-18 16:45:37 +0200] [166913] [INFO] Using worker: sync
+[2024-07-18 16:45:37 +0200] [166914] [INFO] Booting worker with pid: 166914
+[2024-07-18 16:45:37 +0200] [166916] [INFO] Booting worker with pid: 166916
+[2024-07-18 16:45:37 +0200] [166928] [INFO] Booting worker with pid: 166928
+[2024-07-18 16:45:37 +0200] [166929] [INFO] Booting worker with pid: 166929
+[2024-07-18 16:45:37 +0200] [166941] [INFO] Booting worker with pid: 166941
+[2024-07-18 16:45:37 +0200] [166942] [INFO] Booting worker with pid: 166942
+[2024-07-18 16:45:37 +0200] [166966] [INFO] Booting worker with pid: 166966
+[2024-07-18 16:45:37 +0200] [166978] [INFO] Booting worker with pid: 166978
+[2024-07-18 16:45:37 +0200] [166990] [INFO] Booting worker with pid: 166990
+[2024-07-18 16:45:37 +0200] [167002] [INFO] Booting worker with pid: 167002
+[2024-07-18 16:45:37 +0200] [167007] [INFO] Booting worker with pid: 167007
+[2024-07-18 16:45:38 +0200] [167011] [INFO] Booting worker with pid: 167011
+[2024-07-18 16:45:38 +0200] [167034] [INFO] Booting worker with pid: 167034
+[2024-07-18 16:45:38 +0200] [167035] [INFO] Booting worker with pid: 167035
+[2024-07-18 16:45:38 +0200] [167037] [INFO] Booting worker with pid: 167037
+[2024-07-18 16:45:38 +0200] [167052] [INFO] Booting worker with pid: 167052
+[2024-07-18 16:45:38 +0200] [167055] [INFO] Booting worker with pid: 167055
+[2024-07-18 16:45:38 +0200] [167082] [INFO] Booting worker with pid: 167082
+[2024-07-18 16:45:38 +0200] [167084] [INFO] Booting worker with pid: 167084
+[2024-07-18 16:45:38 +0200] [167085] [INFO] Booting worker with pid: 167085
+[2024-07-18 16:45:38 +0200] [167087] [INFO] Booting worker with pid: 167087
+[2024-07-18 16:45:38 +0200] [167103] [INFO] Booting worker with pid: 167103
+[2024-07-18 16:45:38 +0200] [167108] [INFO] Booting worker with pid: 167108
+[2024-07-18 16:45:38 +0200] [167143] [INFO] Booting worker with pid: 167143
+[2024-07-18 16:45:38 +0200] [167148] [INFO] Booting worker with pid: 167148
+[2024-07-18 16:51:58 +0200] [166913] [INFO] Handling signal: int
+[2024-07-18 14:51:58 +0000] [166941] [INFO] Worker exiting (pid: 166941)
+[2024-07-18 14:51:58 +0000] [167052] [INFO] Worker exiting (pid: 167052)
+[2024-07-18 14:51:58 +0000] [167055] [INFO] Worker exiting (pid: 167055)
+[2024-07-18 14:51:58 +0000] [167084] [INFO] Worker exiting (pid: 167084)
+[2024-07-18 14:51:58 +0000] [167085] [INFO] Worker exiting (pid: 167085)
+[2024-07-18 14:51:58 +0000] [167037] [INFO] Worker exiting (pid: 167037)
+[2024-07-18 14:51:58 +0000] [166928] [INFO] Worker exiting (pid: 166928)
+[2024-07-18 14:51:58 +0000] [166929] [INFO] Worker exiting (pid: 166929)
+[2024-07-18 14:51:58 +0000] [167035] [INFO] Worker exiting (pid: 167035)
+[2024-07-18 14:51:58 +0000] [167082] [INFO] Worker exiting (pid: 167082)
+[2024-07-18 14:51:58 +0000] [166978] [INFO] Worker exiting (pid: 166978)
+[2024-07-18 14:51:58 +0000] [166990] [INFO] Worker exiting (pid: 166990)
+[2024-07-18 14:51:58 +0000] [167103] [INFO] Worker exiting (pid: 167103)
+[2024-07-18 14:51:58 +0000] [167148] [INFO] Worker exiting (pid: 167148)
+[2024-07-18 14:51:58 +0000] [166966] [INFO] Worker exiting (pid: 166966)
+[2024-07-18 14:51:58 +0000] [167034] [INFO] Worker exiting (pid: 167034)
+[2024-07-18 14:51:58 +0000] [166914] [INFO] Worker exiting (pid: 166914)
+[2024-07-18 14:51:58 +0000] [167007] [INFO] Worker exiting (pid: 167007)
+[2024-07-18 14:51:58 +0000] [166916] [INFO] Worker exiting (pid: 166916)
+[2024-07-18 14:51:58 +0000] [166942] [INFO] Worker exiting (pid: 166942)
+[2024-07-18 14:51:58 +0000] [167011] [INFO] Worker exiting (pid: 167011)
+[2024-07-18 14:51:58 +0000] [167002] [INFO] Worker exiting (pid: 167002)
+[2024-07-18 14:51:58 +0000] [167143] [INFO] Worker exiting (pid: 167143)
+[2024-07-18 14:51:58 +0000] [167108] [INFO] Worker exiting (pid: 167108)
+[2024-07-18 14:51:58 +0000] [167087] [INFO] Worker exiting (pid: 167087)
+[2024-07-18 16:51:59 +0200] [166913] [INFO] Shutting down: Master
+[2024-07-18 16:56:01 +0200] [171736] [INFO] Starting gunicorn 22.0.0
+[2024-07-18 16:56:01 +0200] [171736] [INFO] Listening at: http://127.0.0.1:8000 (171736)
+[2024-07-18 16:56:01 +0200] [171736] [INFO] Using worker: sync
+[2024-07-18 16:56:01 +0200] [171737] [INFO] Booting worker with pid: 171737
+[2024-07-18 16:56:01 +0200] [171738] [INFO] Booting worker with pid: 171738
+[2024-07-18 16:56:01 +0200] [171740] [INFO] Booting worker with pid: 171740
+[2024-07-18 16:56:01 +0200] [171741] [INFO] Booting worker with pid: 171741
+[2024-07-18 16:56:01 +0200] [171742] [INFO] Booting worker with pid: 171742
+[2024-07-18 16:56:01 +0200] [171743] [INFO] Booting worker with pid: 171743
+[2024-07-18 16:56:01 +0200] [171788] [INFO] Booting worker with pid: 171788
+[2024-07-18 16:56:01 +0200] [171790] [INFO] Booting worker with pid: 171790
+[2024-07-18 16:56:01 +0200] [171802] [INFO] Booting worker with pid: 171802
+[2024-07-18 16:56:02 +0200] [171814] [INFO] Booting worker with pid: 171814
+[2024-07-18 16:56:02 +0200] [171815] [INFO] Booting worker with pid: 171815
+[2024-07-18 16:56:02 +0200] [171816] [INFO] Booting worker with pid: 171816
+[2024-07-18 16:56:02 +0200] [171817] [INFO] Booting worker with pid: 171817
+[2024-07-18 16:56:02 +0200] [171840] [INFO] Booting worker with pid: 171840
+[2024-07-18 16:56:02 +0200] [171842] [INFO] Booting worker with pid: 171842
+[2024-07-18 16:56:02 +0200] [171843] [INFO] Booting worker with pid: 171843
+[2024-07-18 16:56:02 +0200] [171889] [INFO] Booting worker with pid: 171889
+[2024-07-18 16:56:02 +0200] [171888] [INFO] Booting worker with pid: 171888
+[2024-07-18 16:56:02 +0200] [171901] [INFO] Booting worker with pid: 171901
+[2024-07-18 16:56:02 +0200] [171915] [INFO] Booting worker with pid: 171915
+[2024-07-18 16:56:02 +0200] [171930] [INFO] Booting worker with pid: 171930
+[2024-07-18 16:56:02 +0200] [171932] [INFO] Booting worker with pid: 171932
+[2024-07-18 16:56:02 +0200] [171937] [INFO] Booting worker with pid: 171937
+[2024-07-18 16:56:02 +0200] [171953] [INFO] Booting worker with pid: 171953
+[2024-07-18 16:56:02 +0200] [171983] [INFO] Booting worker with pid: 171983
+[2024-07-18 16:56:39 +0200] [171736] [CRITICAL] WORKER TIMEOUT (pid:171888)
+[2024-07-18 14:56:39 +0000] [171888] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-18 14:56:39 +0000] [171888] [INFO] Worker exiting (pid: 171888)
+[2024-07-18 16:56:40 +0200] [172490] [INFO] Booting worker with pid: 172490
+[2024-07-18 17:16:07 +0200] [171736] [INFO] Handling signal: int
+[2024-07-18 15:16:07 +0000] [171953] [INFO] Worker exiting (pid: 171953)
+[2024-07-18 15:16:07 +0000] [171915] [INFO] Worker exiting (pid: 171915)
+[2024-07-18 15:16:07 +0000] [172490] [INFO] Worker exiting (pid: 172490)
+[2024-07-18 15:16:07 +0000] [171842] [INFO] Worker exiting (pid: 171842)
+[2024-07-18 15:16:07 +0000] [171814] [INFO] Worker exiting (pid: 171814)
+[2024-07-18 15:16:07 +0000] [171843] [INFO] Worker exiting (pid: 171843)
+[2024-07-18 15:16:07 +0000] [171742] [INFO] Worker exiting (pid: 171742)
+[2024-07-18 15:16:07 +0000] [171816] [INFO] Worker exiting (pid: 171816)
+[2024-07-18 15:16:07 +0000] [171737] [INFO] Worker exiting (pid: 171737)
+[2024-07-18 15:16:07 +0000] [171738] [INFO] Worker exiting (pid: 171738)
+[2024-07-18 15:16:07 +0000] [171740] [INFO] Worker exiting (pid: 171740)
+[2024-07-18 15:16:07 +0000] [171743] [INFO] Worker exiting (pid: 171743)
+[2024-07-18 15:16:07 +0000] [171802] [INFO] Worker exiting (pid: 171802)
+[2024-07-18 15:16:07 +0000] [171983] [INFO] Worker exiting (pid: 171983)
+[2024-07-18 15:16:07 +0000] [171817] [INFO] Worker exiting (pid: 171817)
+[2024-07-18 15:16:07 +0000] [171815] [INFO] Worker exiting (pid: 171815)
+[2024-07-18 15:16:07 +0000] [171889] [INFO] Worker exiting (pid: 171889)
+[2024-07-18 15:16:07 +0000] [171937] [INFO] Worker exiting (pid: 171937)
+[2024-07-18 15:16:07 +0000] [171930] [INFO] Worker exiting (pid: 171930)
+[2024-07-18 15:16:07 +0000] [171741] [INFO] Worker exiting (pid: 171741)
+[2024-07-18 15:16:07 +0000] [171788] [INFO] Worker exiting (pid: 171788)
+[2024-07-18 15:16:07 +0000] [171840] [INFO] Worker exiting (pid: 171840)
+[2024-07-18 15:16:07 +0000] [171901] [INFO] Worker exiting (pid: 171901)
+[2024-07-18 15:16:07 +0000] [171932] [INFO] Worker exiting (pid: 171932)
+[2024-07-18 15:16:07 +0000] [171790] [INFO] Worker exiting (pid: 171790)
+[2024-07-18 17:16:08 +0200] [171736] [INFO] Shutting down: Master
+[2024-07-18 17:20:41 +0200] [182387] [INFO] Starting gunicorn 22.0.0
+[2024-07-18 17:20:41 +0200] [182387] [INFO] Listening at: http://127.0.0.1:8000 (182387)
+[2024-07-18 17:20:41 +0200] [182387] [INFO] Using worker: sync
+[2024-07-18 17:20:41 +0200] [182389] [INFO] Booting worker with pid: 182389
+[2024-07-18 17:20:41 +0200] [182390] [INFO] Booting worker with pid: 182390
+[2024-07-18 17:20:41 +0200] [182391] [INFO] Booting worker with pid: 182391
+[2024-07-18 17:20:41 +0200] [182392] [INFO] Booting worker with pid: 182392
+[2024-07-18 17:20:41 +0200] [182393] [INFO] Booting worker with pid: 182393
+[2024-07-18 17:20:41 +0200] [182395] [INFO] Booting worker with pid: 182395
+[2024-07-18 17:20:41 +0200] [182396] [INFO] Booting worker with pid: 182396
+[2024-07-18 17:20:41 +0200] [182397] [INFO] Booting worker with pid: 182397
+[2024-07-18 17:20:41 +0200] [182453] [INFO] Booting worker with pid: 182453
+[2024-07-18 17:20:41 +0200] [182455] [INFO] Booting worker with pid: 182455
+[2024-07-18 17:20:41 +0200] [182454] [INFO] Booting worker with pid: 182454
+[2024-07-18 17:20:41 +0200] [182468] [INFO] Booting worker with pid: 182468
+[2024-07-18 17:20:41 +0200] [182491] [INFO] Booting worker with pid: 182491
+[2024-07-18 17:20:42 +0200] [182514] [INFO] Booting worker with pid: 182514
+[2024-07-18 17:20:42 +0200] [182526] [INFO] Booting worker with pid: 182526
+[2024-07-18 17:20:42 +0200] [182539] [INFO] Booting worker with pid: 182539
+[2024-07-18 17:20:42 +0200] [182540] [INFO] Booting worker with pid: 182540
+[2024-07-18 17:20:42 +0200] [182552] [INFO] Booting worker with pid: 182552
+[2024-07-18 17:20:42 +0200] [182567] [INFO] Booting worker with pid: 182567
+[2024-07-18 17:20:42 +0200] [182603] [INFO] Booting worker with pid: 182603
+[2024-07-18 17:20:42 +0200] [182608] [INFO] Booting worker with pid: 182608
+[2024-07-18 17:20:42 +0200] [182611] [INFO] Booting worker with pid: 182611
+[2024-07-18 17:20:42 +0200] [182613] [INFO] Booting worker with pid: 182613
+[2024-07-18 17:20:42 +0200] [182622] [INFO] Booting worker with pid: 182622
+[2024-07-18 17:20:42 +0200] [182626] [INFO] Booting worker with pid: 182626
+[2024-07-18 17:54:12 +0200] [182387] [INFO] Handling signal: int
+[2024-07-18 15:54:12 +0000] [182390] [INFO] Worker exiting (pid: 182390)
+[2024-07-18 15:54:12 +0000] [182391] [INFO] Worker exiting (pid: 182391)
+[2024-07-18 15:54:12 +0000] [182395] [INFO] Worker exiting (pid: 182395)
+[2024-07-18 15:54:12 +0000] [182455] [INFO] Worker exiting (pid: 182455)
+[2024-07-18 15:54:12 +0000] [182389] [INFO] Worker exiting (pid: 182389)
+[2024-07-18 15:54:12 +0000] [182454] [INFO] Worker exiting (pid: 182454)
+[2024-07-18 15:54:12 +0000] [182397] [INFO] Worker exiting (pid: 182397)
+[2024-07-18 15:54:12 +0000] [182392] [INFO] Worker exiting (pid: 182392)
+[2024-07-18 15:54:12 +0000] [182393] [INFO] Worker exiting (pid: 182393)
+[2024-07-18 15:54:12 +0000] [182468] [INFO] Worker exiting (pid: 182468)
+[2024-07-18 15:54:12 +0000] [182613] [INFO] Worker exiting (pid: 182613)
+[2024-07-18 15:54:12 +0000] [182608] [INFO] Worker exiting (pid: 182608)
+[2024-07-18 15:54:12 +0000] [182611] [INFO] Worker exiting (pid: 182611)
+[2024-07-18 15:54:12 +0000] [182453] [INFO] Worker exiting (pid: 182453)
+[2024-07-18 15:54:12 +0000] [182396] [INFO] Worker exiting (pid: 182396)
+[2024-07-18 15:54:12 +0000] [182491] [INFO] Worker exiting (pid: 182491)
+[2024-07-18 15:54:12 +0000] [182567] [INFO] Worker exiting (pid: 182567)
+[2024-07-18 15:54:12 +0000] [182540] [INFO] Worker exiting (pid: 182540)
+[2024-07-18 15:54:12 +0000] [182626] [INFO] Worker exiting (pid: 182626)
+[2024-07-18 15:54:12 +0000] [182526] [INFO] Worker exiting (pid: 182526)
+[2024-07-18 15:54:12 +0000] [182603] [INFO] Worker exiting (pid: 182603)
+[2024-07-18 15:54:12 +0000] [182552] [INFO] Worker exiting (pid: 182552)
+[2024-07-18 15:54:12 +0000] [182622] [INFO] Worker exiting (pid: 182622)
+[2024-07-18 15:54:12 +0000] [182539] [INFO] Worker exiting (pid: 182539)
+[2024-07-18 15:54:12 +0000] [182514] [INFO] Worker exiting (pid: 182514)
+[2024-07-18 17:54:13 +0200] [182387] [INFO] Shutting down: Master
