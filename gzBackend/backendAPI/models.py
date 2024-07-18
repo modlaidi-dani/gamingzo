@@ -317,3 +317,13 @@ class Product(index.Indexed, ClusterableModel):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+
+@register_snippet
+class CheckoutInfo(models.Model):
+    first_name=models.CharField(max_length=200, null= False)
+    last_name=models.CharField(max_length=200, null=False)
+    wilaya=models.CharField(max_length=200,null=False)
+    street=models.CharField(max_length=200,null=False)
+    phone_num=models.IntegerField()
+    email=models.EmailField()
+    note=models.TextField()

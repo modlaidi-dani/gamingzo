@@ -27,7 +27,9 @@ class Contacte(viewsets.ModelViewSet):
 class Affiliation(generics.CreateAPIView):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
-
+class Chckout(generics.CreateAPIView):
+    queryset=CheckoutInfo.objects.all()
+    serializer_class=CheckouSerializer
 class Produit(generics.ListAPIView):
     queryset= Product.objects.all()
     serializer_class=ProductrSerializer

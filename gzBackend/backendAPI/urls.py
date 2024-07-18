@@ -9,5 +9,8 @@ urlpatterns = [
     #product endoint: localhos/api/getProducts
     path('getProducts', Produit.as_view()),
     path('',include(router.urls)),
-    path('affiliation',Affiliation.as_view())
+    path('affiliation',Affiliation.as_view()),
+    #for checkout localhoste/api/checkout
+    path('checkout',Chckout.as_view()),
+
 ]

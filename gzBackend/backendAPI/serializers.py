@@ -13,4 +13,7 @@ class ProductrSerializer(serializers.ModelSerializer):
     class Meta:
             model = Product
             fields="__all__"
-            
+class CheckouSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = CheckoutInfo
+            fields="__all__"
