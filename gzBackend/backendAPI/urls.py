@@ -6,7 +6,8 @@ router= routers.DefaultRouter()
 router.register("contact", Contacte)
 
 urlpatterns = [
-    path('getProducts', views.getHomeData, name="prod-data"),
+    #product endoint: localhos/api/getProducts
+    path('getProducts', Produit.as_view()),
     path('',include(router.urls)),
     path('affiliation',Affiliation.as_view())
 ]

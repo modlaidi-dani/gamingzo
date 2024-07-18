@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import json
-from . import models
+from .models import *
 from django.http import JsonResponse
 from django.db.models import Prefetch, Q, Case, When, Count
 
@@ -13,6 +13,7 @@ from rest_framework import viewsets,generics
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
 
 class Contacte(viewsets.ModelViewSet):
     queryset=ContactForm.objects.all()
@@ -27,11 +28,11 @@ class Affiliation(generics.CreateAPIView):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
 
-@csrf_exempt
-def getHomeData(request):
-    if request.method == 'GET':
-        # print('request received')    
-        products = models.Product.objects.all()  # Fetch all sections
+class Produit(generics.ListAPIView):
+    queryset= Product.objects.all()
+    serializer_class=ProductrSerializer
+    def list(self, request, *args, **kwargs):
+        products = self.get_queryset()
         products_data = []
         for prod in products:
             products_data.append({
@@ -48,8 +49,9 @@ def getHomeData(request):
                 "config": prod.config,
                 "new": prod.new,
                 "sections": prod.get_sections()
-            }) 
-        # print(products_data)    
-        return JsonResponse({'products': products_data})    
-    else: 
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
+            })  
+        return  Response ({'products': products_data},status=status.HTTP_200_OK)
+    
+
+
+

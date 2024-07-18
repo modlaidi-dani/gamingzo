@@ -9,4 +9,8 @@ class AffiliationsSerializer(serializers.ModelSerializer):
     class Meta:
             model = Affiliation
             fields="__all__"
+class ProductrSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = Product
+            fields="__all__"
             
