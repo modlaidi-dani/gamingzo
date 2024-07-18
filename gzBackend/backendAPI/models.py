@@ -318,8 +318,11 @@ class Product(index.Indexed, ClusterableModel):
         verbose_name = "Product"
         verbose_name_plural = "Products"
 
-@register_snippet
+
 class CheckoutInfo(models.Model):
+    product=models.ManyToManyField(Product)
+    dispatch=models.CharField(max_length=200, default='FromStore')
+    total=models.IntegerField(default=0)
     first_name=models.CharField(max_length=200, null= False)
     last_name=models.CharField(max_length=200, null=False)
     wilaya=models.CharField(max_length=200,null=False)
@@ -327,3 +330,6 @@ class CheckoutInfo(models.Model):
     phone_num=models.IntegerField()
     email=models.EmailField()
     note=models.TextField()
+class Newsletter(models.Model):
+    email=models.EmailField()
+    

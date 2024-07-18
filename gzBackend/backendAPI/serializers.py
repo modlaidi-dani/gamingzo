@@ -17,3 +17,7 @@ class CheckouSerializer(serializers.ModelSerializer):
     class Meta:
             model = CheckoutInfo
             fields="__all__"
+class NewsletterSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = Newsletter
+            fields="__all__"

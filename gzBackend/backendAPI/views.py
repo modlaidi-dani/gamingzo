@@ -18,19 +18,16 @@ from rest_framework.views import APIView
 class Contacte(viewsets.ModelViewSet):
     queryset=ContactForm.objects.all()
     serializer_class=ContacteSerializer
-    def update(self, request, *args, **kwargs):
-        return Response ({"ERROR": "Pas possible " }, status=status.HTTP_404_NOT_FOUND)
-    def destroy(self, request, *args, **kwargs):
-        return Response ({"ERROR": "Pas possible " },status=status.HTTP_404_NOT_FOUND)
-    def partial_update(self, request, *args, **kwargs):
-        return Response ({"ERROR": "Pas possible " },status=status.HTTP_404_NOT_FOUND)
-class Affiliation(generics.CreateAPIView):
+class Affiliation(viewsets.ModelViewSet):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
-class Chckout(generics.CreateAPIView):
+class Chckout(viewsets.ModelViewSet):
     queryset=CheckoutInfo.objects.all()
     serializer_class=CheckouSerializer
-class Produit(generics.ListAPIView):
+class NewsletterVienw(viewsets.ModelViewSet):
+    queryset=Newsletter.objects.all()
+    serializer_class=NewsletterSerializer
+class Produit(viewsets.ModelViewSet):
     queryset= Product.objects.all()
     serializer_class=ProductrSerializer
     def list(self, request, *args, **kwargs):
