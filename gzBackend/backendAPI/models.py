@@ -49,9 +49,11 @@ class ContactForm(models.Model):
         ('en-attente', 'En Attente'),
         ('solved', 'Résolu'),
     }            
-    object = models.CharField(max_length=255, blank=False, null=True)
-    dateSend = models.DateField()
+    name = models.CharField(max_length=200, null=False,blank=False)
+    date = models.DateField(auto_now_add=True)
     phoneNumber = models.CharField(max_length=255, blank=False, null=True)
+    company = models.CharField(max_length=200, null=False,blank=False)
+    email=models.EmailField(blank=False)
     state = models.CharField(max_length=255, choices=State_CHOICES, null=True)
     Message = models.TextField()
     
