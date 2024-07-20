@@ -21,11 +21,13 @@ class Affiliation(models.Model):
     last_name=models.CharField(max_length=200,null=False)
     first_name=models.CharField(max_length=200,null=False)
     email=models.EmailField()
-    phone_num=models.IntegerField(max_length=200,null=True)
+    phone_num=models.IntegerField(null=True)
     facebook=models.TextField()
     instagram=models.TextField()
     tiktok=models.TextField()
     youtube=models.TextField()
+    def __str__(self) :
+        return f"{self.last_name}  {self.first_name}"
 
 
 
@@ -54,15 +56,18 @@ class ContactForm(models.Model):
     phoneNumber = models.CharField(max_length=255, blank=False, null=True)
     company = models.CharField(max_length=200, null=False,blank=False)
     email=models.EmailField(blank=False)
-    state = models.CharField(max_length=255, choices=State_CHOICES, null=True)
+    state = models.CharField(max_length=255 ,choices=State_CHOICES, null=True,default='en-attente')
     Message = models.TextField()
-    
+    def __str__(self) :
+        return f"name: {self.name} company: {self.company} status: {self.state}  "
 @register_snippet 
 class Brands(models.Model):
     brand_name = models.CharField(max_length=255, blank=False, null=True)
     logo = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
     ) 
+    def __str__(self) -> str:
+        return (self.brand_name)
     
 @register_snippet 
 class Partners(models.Model):
@@ -255,7 +260,8 @@ class Product(index.Indexed, ClusterableModel):
     filters = StreamField([
         ('filterS', FilterBlock()),
     ], blank=True, use_json_field=True)
-    
+    def __str__(self):
+        return f"{self.reference}  {self.designation}"
     #------------------------- end of fields 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
@@ -319,8 +325,8 @@ class Product(index.Indexed, ClusterableModel):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-
-
+########
+@register_snippet
 class CheckoutInfo(models.Model):
     product=models.ManyToManyField(Product)
     dispatch=models.CharField(max_length=200, default='FromStore')
@@ -332,6 +338,12 @@ class CheckoutInfo(models.Model):
     phone_num=models.IntegerField()
     email=models.EmailField()
     note=models.TextField()
+    date=models.DateField( null=True, auto_now_add=True)
+    def __str__(self):
+        return f" name: {self.first_name} {self.last_name}  to:{self.wilaya}"
+    
+@register_snippet
 class Newsletter(models.Model):
     email=models.EmailField()
-    
+    def __str__(self) -> str:
+        return (self.email)    
