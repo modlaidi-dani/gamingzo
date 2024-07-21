@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-import json
+
 from .models import *
 from django.http import JsonResponse
 from django.db.models import Prefetch, Q, Case, When, Count
-
+from django.core.cache import cache
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from .models import Category,ContactForm,Affiliation
@@ -31,25 +31,31 @@ class Produit(viewsets.ModelViewSet):
     queryset= Product.objects.all()
     serializer_class=ProductrSerializer
     def list(self, request, *args, **kwargs):
-        products = self.get_queryset()
-        products_data = []
-        for prod in products:
-            products_data.append({
-                "id": prod.id,
-                "name": prod.designation,
-                "description": prod.description,
-                "price": prod.price,
-                "images": prod.get_image(),
-                "stock": prod.quantity,
-                "deal": prod.promo,
-                "deal price": prod.price_promo,
-                "category": prod.category.component if prod.category else '',
-                "filter": prod.get_filters(),
-                "config": prod.config,
-                "new": prod.new,
-                "sections": prod.get_sections()
-            })  
-        return  Response ({'products': products_data},status=status.HTTP_200_OK)
+        key="product_liste"
+        products_data=cache.get(key)
+        if products_data:
+            return Response({'products': products_data, 'source': 'cache'}, status=status.HTTP_200_OK)
+        elif products_data is None:
+            products = self.get_queryset()
+            products_data = []
+            for prod in products:
+                products_data.append({
+                    "id": prod.id,
+                    "name": prod.designation,
+                    "description": prod.description,
+                    "price": prod.price,
+                    "images": prod.get_image(),
+                    "stock": prod.quantity,
+                    "deal": prod.promo,
+                    "deal price": prod.price_promo,
+                    "category": prod.category.component if prod.category else '',
+                    "filter": prod.get_filters(),
+                    "config": prod.config,
+                    "new": prod.new,
+                    "sections": prod.get_sections()
+                })
+                cache.set(key,products_data,timeout=15*60)  #secand 
+        return  Response ({'products': products_data, 'source': 'PSQL'},status=status.HTTP_200_OK)
     
 
 
