@@ -2239,3 +2239,23 @@ SystemExit: 1
 [2024-07-21 19:07:58 +0000] [40439] [INFO] Worker exiting (pid: 40439)
 [2024-07-21 19:07:58 +0000] [40438] [INFO] Worker exiting (pid: 40438)
 [2024-07-21 20:08:00 +0100] [40395] [INFO] Shutting down: Master
+[2024-07-21 21:57:50 +0100] [65081] [INFO] Starting gunicorn 22.0.0
+[2024-07-21 21:57:50 +0100] [65081] [INFO] Listening at: http://127.0.0.1:8000 (65081)
+[2024-07-21 21:57:50 +0100] [65081] [INFO] Using worker: sync
+[2024-07-21 21:57:50 +0100] [65082] [INFO] Booting worker with pid: 65082
+[2024-07-21 21:57:50 +0100] [65083] [INFO] Booting worker with pid: 65083
+[2024-07-21 21:57:50 +0100] [65085] [INFO] Booting worker with pid: 65085
+[2024-07-21 21:57:50 +0100] [65086] [INFO] Booting worker with pid: 65086
+[2024-07-21 21:57:50 +0100] [65087] [INFO] Booting worker with pid: 65087
+[2024-07-21 21:57:50 +0100] [65103] [INFO] Booting worker with pid: 65103
+[2024-07-21 21:57:50 +0100] [65104] [INFO] Booting worker with pid: 65104
+[2024-07-21 21:57:50 +0100] [65105] [INFO] Booting worker with pid: 65105
+[2024-07-21 21:57:50 +0100] [65106] [INFO] Booting worker with pid: 65106
+[2024-07-21 21:57:50 +0100] [65114] [INFO] Booting worker with pid: 65114
+[2024-07-21 21:57:50 +0100] [65116] [INFO] Booting worker with pid: 65116
+[2024-07-21 21:57:50 +0100] [65117] [INFO] Booting worker with pid: 65117
+[2024-07-21 21:57:50 +0100] [65128] [INFO] Booting worker with pid: 65128
+[2024-07-21 21:57:50 +0100] [65139] [INFO] Booting worker with pid: 65139
+[2024-07-21 21:57:51 +0100] [65151] [INFO] Booting worker with pid: 65151
+[2024-07-21 21:57:51 +0100] [65152] [INFO] Booting worker with pid: 65152
+[2024-07-21 21:57:51 +0100] [65153] [INFO] Booting worker with pid: 65153
