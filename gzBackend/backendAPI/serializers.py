@@ -21,3 +21,7 @@ class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
             model = Newsletter
             fields="__all__"
+class SectionHomeSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = SectionHome
+            fields="__all__"

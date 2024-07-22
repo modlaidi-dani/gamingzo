@@ -80,5 +80,18 @@ class Produit(viewsets.ModelViewSet):
         
         return Response({'product': product_data}, status=status.HTTP_200_OK)    
 
-
-
+class HomeSection(viewsets.ModelViewSet):
+    queryset=SectionHome.objects.all()
+    serializer_class=SectionHomeSerializer
+    def list(self, request, *args, **kwargs):
+        sections = self.get_queryset()
+        sections_data = []
+        for section in sections:
+            sections_data.append({
+                "id": section.id,
+                "title": section.title,
+                "description": section.description,
+                "image_url": section.image.get_rendition('fill-500x500').url if section.image else None,
+                "link": section.link
+            })  
+        return  Response ( sections_data,status=status.HTTP_200_OK)
