@@ -33,8 +33,9 @@ class Produit(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         key="product_liste"
         products_data=cache.get(key)     
-        if products_data is None:
-            products = self.get_queryset()
+        products = self.get_queryset()
+
+        if products_data is None or (len(products_data)!=len(products)) :
             products_data = []
             for prod in products:
                 products_data.append({
