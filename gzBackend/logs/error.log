@@ -2259,3 +2259,158 @@ SystemExit: 1
 [2024-07-21 21:57:51 +0100] [65151] [INFO] Booting worker with pid: 65151
 [2024-07-21 21:57:51 +0100] [65152] [INFO] Booting worker with pid: 65152
 [2024-07-21 21:57:51 +0100] [65153] [INFO] Booting worker with pid: 65153
+[2024-07-22 10:41:51 +0200] [19300] [INFO] Starting gunicorn 22.0.0
+[2024-07-22 10:41:51 +0200] [19300] [INFO] Listening at: http://127.0.0.1:8000 (19300)
+[2024-07-22 10:41:51 +0200] [19300] [INFO] Using worker: sync
+[2024-07-22 10:41:51 +0200] [19302] [INFO] Booting worker with pid: 19302
+[2024-07-22 10:41:51 +0200] [19303] [INFO] Booting worker with pid: 19303
+[2024-07-22 10:41:51 +0200] [19304] [INFO] Booting worker with pid: 19304
+[2024-07-22 10:41:51 +0200] [19305] [INFO] Booting worker with pid: 19305
+[2024-07-22 10:41:51 +0200] [19340] [INFO] Booting worker with pid: 19340
+[2024-07-22 10:41:51 +0200] [19341] [INFO] Booting worker with pid: 19341
+[2024-07-22 10:41:51 +0200] [19353] [INFO] Booting worker with pid: 19353
+[2024-07-22 10:41:51 +0200] [19354] [INFO] Booting worker with pid: 19354
+[2024-07-22 10:41:52 +0200] [19377] [INFO] Booting worker with pid: 19377
+[2024-07-22 10:41:52 +0200] [19379] [INFO] Booting worker with pid: 19379
+[2024-07-22 10:41:52 +0200] [19381] [INFO] Booting worker with pid: 19381
+[2024-07-22 10:41:52 +0200] [19392] [INFO] Booting worker with pid: 19392
+[2024-07-22 10:41:52 +0200] [19393] [INFO] Booting worker with pid: 19393
+[2024-07-22 10:41:52 +0200] [19416] [INFO] Booting worker with pid: 19416
+[2024-07-22 10:41:52 +0200] [19417] [INFO] Booting worker with pid: 19417
+[2024-07-22 10:41:52 +0200] [19419] [INFO] Booting worker with pid: 19419
+[2024-07-22 10:41:52 +0200] [19420] [INFO] Booting worker with pid: 19420
+[2024-07-22 10:41:52 +0200] [19443] [INFO] Booting worker with pid: 19443
+[2024-07-22 10:41:52 +0200] [19465] [INFO] Booting worker with pid: 19465
+[2024-07-22 10:41:52 +0200] [19469] [INFO] Booting worker with pid: 19469
+[2024-07-22 10:41:52 +0200] [19474] [INFO] Booting worker with pid: 19474
+[2024-07-22 10:41:52 +0200] [19493] [INFO] Booting worker with pid: 19493
+[2024-07-22 10:41:52 +0200] [19505] [INFO] Booting worker with pid: 19505
+[2024-07-22 10:41:52 +0200] [19527] [INFO] Booting worker with pid: 19527
+[2024-07-22 10:41:52 +0200] [19551] [INFO] Booting worker with pid: 19551
+[2024-07-22 10:50:42 +0200] [19300] [CRITICAL] WORKER TIMEOUT (pid:19354)
+[2024-07-22 08:50:42 +0000] [19354] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 08:50:42 +0000] [19354] [INFO] Worker exiting (pid: 19354)
+[2024-07-22 10:50:42 +0200] [23995] [INFO] Booting worker with pid: 23995
+[2024-07-22 10:54:59 +0200] [19300] [CRITICAL] WORKER TIMEOUT (pid:23995)
+[2024-07-22 08:54:59 +0000] [23995] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 08:54:59 +0000] [23995] [INFO] Worker exiting (pid: 23995)
+[2024-07-22 10:54:59 +0200] [26094] [INFO] Booting worker with pid: 26094
+[2024-07-22 10:55:11 +0200] [19300] [INFO] Handling signal: term
+[2024-07-22 08:55:11 +0000] [19302] [INFO] Worker exiting (pid: 19302)
+[2024-07-22 08:55:11 +0000] [19305] [INFO] Worker exiting (pid: 19305)
+[2024-07-22 08:55:11 +0000] [19304] [INFO] Worker exiting (pid: 19304)
+[2024-07-22 08:55:11 +0000] [19303] [INFO] Worker exiting (pid: 19303)
+[2024-07-22 08:55:11 +0000] [19340] [INFO] Worker exiting (pid: 19340)
+[2024-07-22 08:55:11 +0000] [19341] [INFO] Worker exiting (pid: 19341)
+[2024-07-22 08:55:11 +0000] [19443] [INFO] Worker exiting (pid: 19443)
+[2024-07-22 08:55:11 +0000] [19353] [INFO] Worker exiting (pid: 19353)
+[2024-07-22 08:55:11 +0000] [19377] [INFO] Worker exiting (pid: 19377)
+[2024-07-22 08:55:11 +0000] [19419] [INFO] Worker exiting (pid: 19419)
+[2024-07-22 08:55:11 +0000] [19420] [INFO] Worker exiting (pid: 19420)
+[2024-07-22 08:55:11 +0000] [19465] [INFO] Worker exiting (pid: 19465)
+[2024-07-22 08:55:11 +0000] [19527] [INFO] Worker exiting (pid: 19527)
+[2024-07-22 08:55:11 +0000] [19416] [INFO] Worker exiting (pid: 19416)
+[2024-07-22 08:55:11 +0000] [19417] [INFO] Worker exiting (pid: 19417)
+[2024-07-22 08:55:11 +0000] [19469] [INFO] Worker exiting (pid: 19469)
+[2024-07-22 08:55:11 +0000] [26094] [INFO] Worker exiting (pid: 26094)
+[2024-07-22 08:55:11 +0000] [19392] [INFO] Worker exiting (pid: 19392)
+[2024-07-22 08:55:11 +0000] [19474] [INFO] Worker exiting (pid: 19474)
+[2024-07-22 08:55:11 +0000] [19493] [INFO] Worker exiting (pid: 19493)
+[2024-07-22 08:55:11 +0000] [19393] [INFO] Worker exiting (pid: 19393)
+[2024-07-22 08:55:11 +0000] [19379] [INFO] Worker exiting (pid: 19379)
+[2024-07-22 08:55:11 +0000] [19505] [INFO] Worker exiting (pid: 19505)
+[2024-07-22 08:55:11 +0000] [19381] [INFO] Worker exiting (pid: 19381)
+[2024-07-22 08:55:11 +0000] [19551] [INFO] Worker exiting (pid: 19551)
+[2024-07-22 10:55:12 +0200] [19300] [INFO] Shutting down: Master
+[2024-07-22 10:55:12 +0200] [26229] [INFO] Starting gunicorn 22.0.0
+[2024-07-22 10:55:12 +0200] [26229] [INFO] Listening at: http://127.0.0.1:8000 (26229)
+[2024-07-22 10:55:12 +0200] [26229] [INFO] Using worker: sync
+[2024-07-22 10:55:12 +0200] [26230] [INFO] Booting worker with pid: 26230
+[2024-07-22 10:55:12 +0200] [26231] [INFO] Booting worker with pid: 26231
+[2024-07-22 10:55:12 +0200] [26232] [INFO] Booting worker with pid: 26232
+[2024-07-22 10:55:12 +0200] [26245] [INFO] Booting worker with pid: 26245
+[2024-07-22 10:55:12 +0200] [26246] [INFO] Booting worker with pid: 26246
+[2024-07-22 10:55:12 +0200] [26258] [INFO] Booting worker with pid: 26258
+[2024-07-22 10:55:12 +0200] [26270] [INFO] Booting worker with pid: 26270
+[2024-07-22 10:55:13 +0200] [26282] [INFO] Booting worker with pid: 26282
+[2024-07-22 10:55:13 +0200] [26283] [INFO] Booting worker with pid: 26283
+[2024-07-22 10:55:13 +0200] [26307] [INFO] Booting worker with pid: 26307
+[2024-07-22 10:55:13 +0200] [26308] [INFO] Booting worker with pid: 26308
+[2024-07-22 10:55:13 +0200] [26320] [INFO] Booting worker with pid: 26320
+[2024-07-22 10:55:13 +0200] [26332] [INFO] Booting worker with pid: 26332
+[2024-07-22 10:55:13 +0200] [26344] [INFO] Booting worker with pid: 26344
+[2024-07-22 10:55:13 +0200] [26345] [INFO] Booting worker with pid: 26345
+[2024-07-22 10:55:13 +0200] [26347] [INFO] Booting worker with pid: 26347
+[2024-07-22 10:55:13 +0200] [26348] [INFO] Booting worker with pid: 26348
+[2024-07-22 10:55:13 +0200] [26360] [INFO] Booting worker with pid: 26360
+[2024-07-22 10:55:13 +0200] [26372] [INFO] Booting worker with pid: 26372
+[2024-07-22 10:55:13 +0200] [26374] [INFO] Booting worker with pid: 26374
+[2024-07-22 10:55:13 +0200] [26404] [INFO] Booting worker with pid: 26404
+[2024-07-22 10:55:13 +0200] [26402] [INFO] Booting worker with pid: 26402
+[2024-07-22 10:55:13 +0200] [26407] [INFO] Booting worker with pid: 26407
+[2024-07-22 10:55:13 +0200] [26426] [INFO] Booting worker with pid: 26426
+[2024-07-22 10:55:13 +0200] [26430] [INFO] Booting worker with pid: 26430
+[2024-07-22 10:55:58 +0200] [26229] [CRITICAL] WORKER TIMEOUT (pid:26402)
+[2024-07-22 08:55:58 +0000] [26402] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 08:55:58 +0000] [26402] [INFO] Worker exiting (pid: 26402)
+[2024-07-22 10:55:58 +0200] [26970] [INFO] Booting worker with pid: 26970

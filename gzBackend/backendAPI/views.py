@@ -32,10 +32,8 @@ class Produit(viewsets.ModelViewSet):
     serializer_class=ProductrSerializer
     def list(self, request, *args, **kwargs):
         key="product_liste"
-        products_data=cache.get(key)
-        if products_data:
-            return Response({'products': products_data, 'source': 'cache'}, status=status.HTTP_200_OK)
-        elif products_data is None:
+        products_data=cache.get(key)     
+        if products_data is None:
             products = self.get_queryset()
             products_data = []
             for prod in products:
@@ -55,35 +53,32 @@ class Produit(viewsets.ModelViewSet):
                     "sections": prod.get_sections()
                 })
                 cache.set(key,products_data,timeout=15*60)  #15 MN 
-        return  Response ({'products': products_data, 'source': 'PSQL'},status=status.HTTP_200_OK)
+        return  Response ({'products': products_data},status=status.HTTP_200_OK)
     def retrieve(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         key = f"product_{pk}"
         product_data = cache.get(key)
+        if product_data is None:        
+            product = self.get_object()
+            product_data = {
+                "id": product.id,
+                "name": product.designation,
+                "description": product.description,
+                "price": product.price,
+                "images": product.get_image(),
+                "stock": product.quantity,
+                "deal": product.promo,
+                "deal price": product.price_promo,
+                "category": product.category.component if product.category else '',
+                "filter": product.get_filters(),
+                "config": product.config,
+                "new": product.new,
+                "sections": product.get_sections()
+            }
+            
+            cache.set(key, product_data, timeout=15*60)  # 15 MN
         
-        if product_data:
-            return Response({'product': product_data, 'source': 'cache'}, status=status.HTTP_200_OK)
-        
-        product = self.get_object()
-        product_data = {
-            "id": product.id,
-            "name": product.designation,
-            "description": product.description,
-            "price": product.price,
-            "images": product.get_image(),
-            "stock": product.quantity,
-            "deal": product.promo,
-            "deal price": product.price_promo,
-            "category": product.category.component if product.category else '',
-            "filter": product.get_filters(),
-            "config": product.config,
-            "new": product.new,
-            "sections": product.get_sections()
-        }
-        
-        cache.set(key, product_data, timeout=15*60)  # 15 MN
-        
-        return Response({'product': product_data, 'source': 'PSQL'}, status=status.HTTP_200_OK)    
+        return Response({'product': product_data}, status=status.HTTP_200_OK)    
 
 
 
