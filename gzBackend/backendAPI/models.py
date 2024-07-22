@@ -335,7 +335,7 @@ class CheckoutInfo(models.Model):
     last_name=models.CharField(max_length=200, null=False)
     wilaya=models.CharField(max_length=200,null=False)
     street=models.CharField(max_length=200,null=False)
-    phone_num=models.IntegerField()
+    phone_num=models.CharField(max_length=200,null=False)
     email=models.EmailField()
     note=models.TextField()
     date=models.DateField( null=True, auto_now_add=True)
