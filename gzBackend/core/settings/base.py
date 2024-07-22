@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
+from dotenv import load_dotenv 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
@@ -96,12 +96,13 @@ WSGI_APPLICATION = "core.wsgi.application"
 #         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
 #     }
 # }
+load_dotenv()
 DATABASES = {
             "default": {
                 "ENGINE" : "django.db.backends.postgresql",
-                "NAME": "gamingzone",
-                "USER": "divatech" ,
-                "PASSWORD": "divatech",
+                "NAME": os.getenv("dbname"),
+                "USER": os.getenv("dbuser") ,
+                "PASSWORD":  os.getenv("dbpassword"),
                 "HOST":"localhost",
                 "PORT": 5432, 
                     }

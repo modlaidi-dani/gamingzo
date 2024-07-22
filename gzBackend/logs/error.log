@@ -2414,3 +2414,75 @@ Traceback (most recent call last):
 SystemExit: 1
 [2024-07-22 08:55:58 +0000] [26402] [INFO] Worker exiting (pid: 26402)
 [2024-07-22 10:55:58 +0200] [26970] [INFO] Booting worker with pid: 26970
+[2024-07-22 11:26:39 +0200] [26229] [CRITICAL] WORKER TIMEOUT (pid:26348)
+[2024-07-22 09:26:39 +0000] [26348] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 09:26:39 +0000] [26348] [INFO] Worker exiting (pid: 26348)
+[2024-07-22 11:26:39 +0200] [46187] [INFO] Booting worker with pid: 46187
+[2024-07-22 11:28:24 +0200] [26229] [CRITICAL] WORKER TIMEOUT (pid:26372)
+[2024-07-22 09:28:24 +0000] [26372] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 09:28:24 +0000] [26372] [INFO] Worker exiting (pid: 26372)
+[2024-07-22 11:28:24 +0200] [46950] [INFO] Booting worker with pid: 46950
+[2024-07-22 11:55:38 +0200] [26229] [CRITICAL] WORKER TIMEOUT (pid:26231)
+[2024-07-22 09:55:38 +0000] [26231] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+  File "/home/dani/gaming_zone/ven/lib/python3.10/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-07-22 09:55:38 +0000] [26231] [INFO] Worker exiting (pid: 26231)
+[2024-07-22 11:55:38 +0200] [59151] [INFO] Booting worker with pid: 59151
