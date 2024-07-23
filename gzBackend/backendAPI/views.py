@@ -38,6 +38,7 @@ class Produit(viewsets.ModelViewSet):
         key="product_liste"
         products_data=cache.get(key)     
         if products_data:
+            print("i am using the cache")
             return  Response ({'products': products_data, "source " :'cache '},status=status.HTTP_200_OK)
 
         elif products_data is None  :
@@ -61,6 +62,7 @@ class Produit(viewsets.ModelViewSet):
                     "specifications": prod.get_specs(),
                     "sections": prod.get_sections()
                 })
+                print(prod.get_specs())
                 cache.set(key,products_data,timeout=15*60)  #15 MN 
         return  Response ({'products': products_data, 'source': 'database'},status=status.HTTP_200_OK)
     
@@ -87,7 +89,7 @@ class Produit(viewsets.ModelViewSet):
                 "specifications": product.get_specs(),
                 "sections": product.get_sections()
             }
-            
+            print(product.get_specs())
             cache.set(key, product_data, timeout=15*60)  # 15 MN
         
         return Response({'product': product_data}, status=status.HTTP_200_OK)    
