@@ -15,7 +15,9 @@ from taggit.models import TaggedItemBase
 from django.core.serializers.json import DjangoJSONEncoder
 import json
 from wagtail.images.models import Image  
-
+from django.db.models.signals import post_delete, post_save
+from django.dispatch import receiver
+from django.core.cache import cache
 @register_snippet 
 class Affiliation(models.Model):
     last_name=models.CharField(max_length=200,null=False)
@@ -347,3 +349,12 @@ class Newsletter(models.Model):
     email=models.EmailField()
     def __str__(self) -> str:
         return (self.email)    
+
+
+
+@receiver(post_save, sender=Product)
+def pre_save_handler(sender,instance, **kwargs):
+        cache.clear()
+@receiver(post_delete, sender=Product)
+def pre_delete_handler(sender,instance, **kwargs):
+        cache.clear()

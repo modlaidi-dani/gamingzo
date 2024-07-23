@@ -33,9 +33,11 @@ class Produit(viewsets.ModelViewSet):
     def list(self, request, *args, **kwargs):
         key="product_liste"
         products_data=cache.get(key)     
-        products = self.get_queryset()
+        if products_data:
+            return  Response ({'products': products_data, "source " :'cache '},status=status.HTTP_200_OK)
 
-        if products_data is None or (len(products_data)!=len(products)) :
+        elif products_data is None  :
+            products = self.get_queryset()
             products_data = []
             for prod in products:
                 products_data.append({
@@ -54,7 +56,7 @@ class Produit(viewsets.ModelViewSet):
                     "sections": prod.get_sections()
                 })
                 cache.set(key,products_data,timeout=15*60)  #15 MN 
-        return  Response ({'products': products_data},status=status.HTTP_200_OK)
+        return  Response ({'products': products_data, 'source': 'database'},status=status.HTTP_200_OK)
     def retrieve(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         key = f"product_{pk}"
