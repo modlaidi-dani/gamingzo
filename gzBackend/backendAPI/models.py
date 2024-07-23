@@ -227,6 +227,10 @@ class Product_Galery(StructBlock):
 class ProductPageTag(TaggedItemBase):
     content_object = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='tagged_items')
 
+class TechnicalSpecs(StructBlock):
+    technical_name = TextBlock(blank=True)
+    technical_value = TextBlock (blank=True)
+
 
 @register_snippet
 class Product(index.Indexed, ClusterableModel):
@@ -262,8 +266,12 @@ class Product(index.Indexed, ClusterableModel):
     filters = StreamField([
         ('filterS', FilterBlock()),
     ], blank=True, use_json_field=True)
+    t_specs = StreamField([ 
+        ('TechnicalSpecs', TechnicalSpecs()),
+    ], blank=True, use_json_field=True)
     def __str__(self):
         return f"{self.reference}  {self.designation}"
+
     #------------------------- end of fields 
     content_panels = Page.content_panels + [
         MultiFieldPanel([
