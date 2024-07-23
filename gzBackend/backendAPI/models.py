@@ -18,6 +18,7 @@ from wagtail.images.models import Image
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.core.cache import cache
+
 @register_snippet 
 class Affiliation(models.Model):
     last_name=models.CharField(max_length=200,null=False)
@@ -31,12 +32,6 @@ class Affiliation(models.Model):
     def __str__(self) :
         return f"{self.last_name}  {self.first_name}"
 
-
-
-
-
-
-
 @register_snippet 
 class SectionHome(models.Model):
     title = models.CharField(max_length=255, blank=False, null=True)
@@ -46,7 +41,6 @@ class SectionHome(models.Model):
         'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
     )
     
-
 @register_snippet 
 class ContactForm(models.Model):
     State_CHOICES = {
@@ -60,8 +54,10 @@ class ContactForm(models.Model):
     email=models.EmailField(blank=False)
     state = models.CharField(max_length=255 ,choices=State_CHOICES, null=True,default='en-attente')
     Message = models.TextField()
+    
     def __str__(self) :
         return f"name: {self.name} company: {self.company} status: {self.state}  "
+    
 @register_snippet 
 class Brands(models.Model):
     brand_name = models.CharField(max_length=255, blank=False, null=True)
@@ -245,7 +241,6 @@ class Product(index.Indexed, ClusterableModel):
     arrivage = models.BooleanField(verbose_name="Arrivage", default=False, null=True, blank=True)
     promo = models.BooleanField(verbose_name="Promotion", default=False, null=True, blank=True)
     config = models.BooleanField(verbose_name="Est une config", default=False, null=True, blank=True)
-    tech_specs = RichTextField(blank=True, null=True)
     support_page_link = models.URLField(blank=True, null=True)
     category = models.ForeignKey(
         'Category',
@@ -266,9 +261,11 @@ class Product(index.Indexed, ClusterableModel):
     filters = StreamField([
         ('filterS', FilterBlock()),
     ], blank=True, use_json_field=True)
+    
     t_specs = StreamField([ 
         ('TechnicalSpecs', TechnicalSpecs()),
     ], blank=True, use_json_field=True)
+    
     def __str__(self):
         return f"{self.reference}  {self.designation}"
 
@@ -289,14 +286,11 @@ class Product(index.Indexed, ClusterableModel):
             FieldPanel('promo'),
             FieldPanel('config'),
             FieldPanel('body'),
+            FieldPanel('t_specs'),
         ], heading="Status"),
         MultiFieldPanel([
             FieldPanel('support_page_link'),
         ], heading="Support"),
-        MultiFieldPanel([
-            FieldPanel('tech_specs'),
-        ], heading="Tech Specs", classname="collapsed"),
-        
         MultiFieldPanel([
             FieldPanel('related_product_pages', widget=forms.CheckboxSelectMultiple),
         ], heading="Related Products", classname="collapsed"),
@@ -313,14 +307,30 @@ class Product(index.Indexed, ClusterableModel):
     def get_sections(self):
         sections = []
         for block in self.body:
-            if block.block_type == 'Product_Section':              
+            if block.block_type == 'Product_Section':    
                 description_text = str(block.value.get("caption"))              
+                big_headline = str(block.value.get("big_headline"))              
+                header = str(block.value.get("header"))              
                 image_url = str(block.value['image'].file.url)
                 sections.append({
                     "description": description_text,
+                    "big_headline": big_headline,
+                    "header": header,               
                     "image": image_url,
                 })
         return sections
+    
+    def get_specs(self):
+        specs = []
+        for block in self.t_specs:
+            if block.block_type == 'TechnicalSpecs':    
+                spec_name = str(block.value.get("technical_name"))              
+                spec_value = str(block.value.get("technical_value"))              
+                specs.append({
+                    "spec_name": spec_name,
+                    "spec_value": spec_value,               
+                })
+        return specs
 
     def get_image(self):
         first_image_url = 'http://127.0.0.1:8000/'+[block.value["image"].file.url for block in self.gallery][0]
@@ -335,7 +345,9 @@ class Product(index.Indexed, ClusterableModel):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+        
 ########
+
 @register_snippet
 class CheckoutInfo(models.Model):
     product=models.ManyToManyField(Product)
@@ -358,11 +370,10 @@ class Newsletter(models.Model):
     def __str__(self) -> str:
         return (self.email)    
 
-
-
 @receiver(post_save, sender=Product)
 def pre_save_handler(sender,instance, **kwargs):
         cache.clear()
+        
 @receiver(post_delete, sender=Product)
 def pre_delete_handler(sender,instance, **kwargs):
         cache.clear()

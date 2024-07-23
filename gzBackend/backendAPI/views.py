@@ -18,15 +18,19 @@ from rest_framework.views import APIView
 class Contacte(viewsets.ModelViewSet):
     queryset=ContactForm.objects.all()
     serializer_class=ContacteSerializer
+    
 class Affiliation(viewsets.ModelViewSet):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
+    
 class Chckout(viewsets.ModelViewSet):
     queryset=CheckoutInfo.objects.all()
     serializer_class=CheckouSerializer
+    
 class NewsletterVienw(viewsets.ModelViewSet):
     queryset=Newsletter.objects.all()
     serializer_class=NewsletterSerializer
+    
 class Produit(viewsets.ModelViewSet):
     queryset= Product.objects.all()
     serializer_class=ProductrSerializer
@@ -44,6 +48,7 @@ class Produit(viewsets.ModelViewSet):
                     "id": prod.id,
                     "name": prod.designation,
                     "description": prod.description,
+                    "header_description": prod.header_description,
                     "price": prod.price,
                     "images": prod.get_image(),
                     "stock": prod.quantity,
@@ -53,10 +58,12 @@ class Produit(viewsets.ModelViewSet):
                     "filter": prod.get_filters(),
                     "config": prod.config,
                     "new": prod.new,
+                    "specifications": prod.get_specs(),
                     "sections": prod.get_sections()
                 })
                 cache.set(key,products_data,timeout=15*60)  #15 MN 
         return  Response ({'products': products_data, 'source': 'database'},status=status.HTTP_200_OK)
+    
     def retrieve(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         key = f"product_{pk}"
@@ -67,6 +74,7 @@ class Produit(viewsets.ModelViewSet):
                 "id": product.id,
                 "name": product.designation,
                 "description": product.description,
+                "header_description": product.header_description,
                 "price": product.price,
                 "images": product.get_image(),
                 "stock": product.quantity,
@@ -76,6 +84,7 @@ class Produit(viewsets.ModelViewSet):
                 "filter": product.get_filters(),
                 "config": product.config,
                 "new": product.new,
+                "specifications": product.get_specs(),
                 "sections": product.get_sections()
             }
             
