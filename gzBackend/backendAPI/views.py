@@ -7,7 +7,6 @@ from django.db.models import Prefetch, Q, Case, When, Count
 from django.core.cache import cache
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse, HttpResponseNotFound
-from .models import Category,ContactForm,Affiliation, CheckoutInfo, productsInCheckout
 
 from rest_framework import viewsets,generics
 from .serializers import *
@@ -20,7 +19,7 @@ from .admin import CheckoutInfoAdmin
 def CheckoutInfoInspectView(request, instance_pk):
     instance_pk = instance_pk
     checkout_object = CheckoutInfo.objects.get(id = instance_pk)
-    checkout_products = productsInCheckout.objects.filter(checkout = checkout_object)
+    checkout_products = ProductsInCheckout.objects.filter(checkout = checkout_object)
     context = {'checkout_info': checkout_object, 'checkout_products': checkout_products}
     return render(request, 'checkoutinfo_inspect.html', context)
 
@@ -31,14 +30,31 @@ class Contacte(viewsets.ModelViewSet):
 class Affiliation(viewsets.ModelViewSet):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
-    
+
+
+class checkoutProduct(viewsets.ModelViewSet):
+    queryset=ProductsInCheckout.objects.all()
+    serializer_class=ProductCheckoutserialiser
+
 class Chckout(viewsets.ModelViewSet):
     queryset=CheckoutInfo.objects.all()
     serializer_class=CheckouSerializer
+    def create(self, request, *args, **kwargs):
+        data=request.data
+        products = data.product
+        productsafter=[]
+        for product in len(products):
+            product =checkoutProduct.obejects.creat(product)
+            productsafter.append(product)
+        serializer=self.get_serializer(data=data)
+        if serializer.is_valid():
+            data=serializer.save()
+            for product in productsafter:
+                product.checkout=data
+            return Response(serializer.data,status=status.HTTP_201_CREATED)
+
+
     
-class ProductsInChckout(viewsets.ModelViewSet):
-    queryset=CheckoutInfo.objects.all()
-    serializer_class=CheckouSerializer
     
 class NewsletterVienw(viewsets.ModelViewSet):
     queryset=Newsletter.objects.all()

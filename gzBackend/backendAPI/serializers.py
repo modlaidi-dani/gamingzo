@@ -15,16 +15,25 @@ class ProductrSerializer(serializers.ModelSerializer):
     class Meta:
             model = Product
             fields="__all__"
-            
+
+class ProductCheckoutserialiser(serializers.ModelSerializer):
+    class Meta:
+            model= ProductsInCheckout
+            fields="__all__"
+      
+
 class CheckouSerializer(serializers.ModelSerializer):
+    product=ProductCheckoutserialiser(many=True)
     class Meta:
             model = CheckoutInfo
             fields="__all__"
-            
-class ProductsInCheckouSerializer(serializers.ModelSerializer):
-    class Meta:
-            model = productsInCheckout
-            fields="__all__"
+    def validate(self, data):
+          product=data.get('product')
+          if len(product)==0:
+             raise serializers.ValidationError('put a product')
+          return super().validate(data) 
+
+
             
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:

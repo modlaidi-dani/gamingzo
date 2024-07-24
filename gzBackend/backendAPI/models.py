@@ -348,8 +348,8 @@ class Product(index.Indexed, ClusterableModel):
 ########
 
 @register_snippet
-class productsInCheckout(models.Model):
-    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False )
+class ProductsInCheckout(models.Model):
+    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False,related_name='product' )
     product= models.ForeignKey('Product', on_delete=models.CASCADE, blank = True, null=True, default=None )
     quantity = models.IntegerField(default=1)
     unitprice = models.DecimalField(default=0, decimal_places = 2 , max_digits=10)
