@@ -6,14 +6,23 @@ from django.http import JsonResponse
 from django.db.models import Prefetch, Q, Case, When, Count
 from django.core.cache import cache
 from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
-from .models import Category,ContactForm,Affiliation
+from django.http import JsonResponse, HttpResponseNotFound
+from .models import Category,ContactForm,Affiliation, CheckoutInfo, productsInCheckout
 
 from rest_framework import viewsets,generics
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
+from wagtail.contrib.modeladmin.views import InstanceSpecificView
+from .admin import CheckoutInfoAdmin
+
+def CheckoutInfoInspectView(request, instance_pk):
+    instance_pk = instance_pk
+    checkout_object = CheckoutInfo.objects.get(id = instance_pk)
+    checkout_products = productsInCheckout.objects.filter(checkout = checkout_object)
+    context = {'checkout_info': checkout_object, 'checkout_products': checkout_products}
+    return render(request, 'checkoutinfo_inspect.html', context)
 
 class Contacte(viewsets.ModelViewSet):
     queryset=ContactForm.objects.all()
@@ -24,6 +33,10 @@ class Affiliation(viewsets.ModelViewSet):
     serializer_class=AffiliationsSerializer
     
 class Chckout(viewsets.ModelViewSet):
+    queryset=CheckoutInfo.objects.all()
+    serializer_class=CheckouSerializer
+    
+class ProductsInChckout(viewsets.ModelViewSet):
     queryset=CheckoutInfo.objects.all()
     serializer_class=CheckouSerializer
     

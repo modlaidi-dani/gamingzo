@@ -5,22 +5,32 @@ class ContacteSerializer(serializers.ModelSerializer):
     class Meta:
             model = ContactForm
             fields=("name","company","email","phoneNumber","Message")
+            
 class AffiliationsSerializer(serializers.ModelSerializer):
     class Meta:
             model = Affiliation
             fields="__all__"
+            
 class ProductrSerializer(serializers.ModelSerializer):
     class Meta:
             model = Product
             fields="__all__"
+            
 class CheckouSerializer(serializers.ModelSerializer):
     class Meta:
             model = CheckoutInfo
             fields="__all__"
+            
+class ProductsInCheckouSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = productsInCheckout
+            fields="__all__"
+            
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
             model = Newsletter
             fields="__all__"
+            
 class SectionHomeSerializer(serializers.ModelSerializer):
     class Meta:
             model = SectionHome

@@ -10,11 +10,13 @@ router.register("newsletter", NewsletterVienw,basename="newsletter")
 router.register("getProducts", Produit,basename="product")
 router.register("SectionHome", HomeSection,basename="SectionHome")
 urlpatterns = [
-    path('',include(router.urls))
+    path('',include(router.urls)),
+    # path('/admin/admin/checkoutinfo/<int:instance_pk>/inspect/', 
+    #      CheckoutInfoInspectView.as_view(model_admin=CheckoutInfoAdmin), 
+    #      name='checkoutinfo_inspect'),
     #checkout: localhoste/api/checkout
     #product : localhos/api/getProducts
     #affiliation : localhos/api/affiliation
     #newsletter : localhos/api/newsletter
     #contact : localhos/api/contact
-
 ]

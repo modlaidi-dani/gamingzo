@@ -46,7 +46,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
   
-    
+    "django.contrib.humanize",  # Me
+    'wagtail.contrib.modeladmin',  # Me
+    'wagtail.contrib.settings',  # Me
+    'wagtail.contrib.styleguide',  # Me
+    "django.contrib.sitemaps",  # Me
     "corsheaders",
     "rest_framework",
     "backendAPI",
@@ -183,7 +187,7 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = "http://example.com"
-
+WAGTAILMENUS_ACTIVE_CLASS = "active"
 #### redis
 CACHES = {
     'default': {

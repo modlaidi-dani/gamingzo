@@ -345,12 +345,17 @@ class Product(index.Indexed, ClusterableModel):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-        
 ########
 
 @register_snippet
+class productsInCheckout(models.Model):
+    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False )
+    product= models.ForeignKey('Product', on_delete=models.CASCADE, blank = True, null=True, default=None )
+    quantity = models.IntegerField(default=1)
+    unitprice = models.DecimalField(default=0, decimal_places = 2 , max_digits=10)
+
+@register_snippet
 class CheckoutInfo(models.Model):
-    product=models.ManyToManyField(Product)
     dispatch=models.CharField(max_length=200, default='FromStore')
     total=models.IntegerField(default=0)
     first_name=models.CharField(max_length=200, null= False)
