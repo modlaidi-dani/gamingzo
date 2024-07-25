@@ -18,7 +18,7 @@ from wagtail.images.models import Image
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.core.cache import cache
-
+from datetime import datetime
 @register_snippet 
 class Affiliation(models.Model):
     last_name=models.CharField(max_length=200,null=False)
@@ -349,10 +349,11 @@ class Product(index.Indexed, ClusterableModel):
 
 @register_snippet
 class ProductsInCheckout(models.Model):
-    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False,related_name='product' )
+    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = True, null=False,related_name='product' )
     product= models.ForeignKey('Product', on_delete=models.CASCADE, blank = True, null=True, default=None )
     quantity = models.IntegerField(default=1)
     unitprice = models.DecimalField(default=0, decimal_places = 2 , max_digits=10)
+
 
 @register_snippet
 class CheckoutInfo(models.Model):
