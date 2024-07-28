@@ -32,7 +32,7 @@ class Affiliation(viewsets.ModelViewSet):
     serializer_class=AffiliationsSerializer
 
 
-class checkoutProduct(viewsets.ModelViewSet):
+class CheckoutProduct(viewsets.ModelViewSet):
     queryset=ProductsInCheckout.objects.all()
     serializer_class=ProductCheckoutserialiser
 
@@ -40,18 +40,13 @@ class Chckout(viewsets.ModelViewSet):
     queryset=CheckoutInfo.objects.all()
     serializer_class=CheckouSerializer
     def create(self, request, *args, **kwargs):
-        data=request.data
-        products = data.product
-        productsafter=[]
-        for product in len(products):
-            product =checkoutProduct.obejects.creat(product)
-            productsafter.append(product)
-        serializer=self.get_serializer(data=data)
-        if serializer.is_valid():
-            data=serializer.save()
-            for product in productsafter:
-                product.checkout=data
-            return Response(serializer.data,status=status.HTTP_201_CREATED)
+        data = request.data
+        checkout_serializer = self.get_serializer(data=data)
+        if checkout_serializer.is_valid():
+            checkout_instance = checkout_serializer.save()          
+            return Response(checkout_instance, status=status.HTTP_201_CREATED)
+        else: 
+            return Response(checkout_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
     

@@ -27,13 +27,24 @@ class CheckouSerializer(serializers.ModelSerializer):
     class Meta:
             model = CheckoutInfo
             fields="__all__"
-    def validate(self, data):
-          product=data.get('product')
-          if len(product)==0:
-             raise serializers.ValidationError('put a product')
-          return super().validate(data) 
-
-
+    def to_internal_value(self, data):
+          products=data.get('product')
+        #  print(data)
+          pt=[]
+          for p in products:
+                p={"product_id":p["id"],"unitprice":p["price"],"quantity":p["quantity"],"total":(p["price"]*p["quantity"]) }
+                pt.append(p)
+          data['product']=pt
+          return data
+    def create(self, validated_data):
+        data_v=validated_data
+        products_data = validated_data.get('product')
+        checkou_data= validated_data.pop('product')
+        checkout_instance = CheckoutInfo.objects.create(**validated_data)       
+        for product_data in products_data:
+            product=ProductsInCheckout.objects.create(checkout=checkout_instance, product=Product.objects.get(id=product_data["product_id"]),quantity=product_data["quantity"],unitprice=product_data["unitprice"])
+           
+        return data_v
             
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
