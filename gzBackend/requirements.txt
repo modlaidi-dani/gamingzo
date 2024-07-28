@@ -8,6 +8,7 @@ defusedxml==0.7.1
 Django==4.2.14
 django-cors-headers==4.4.0
 django-filter==23.5
+django-maintenance-mode==0.21.1
 django-modelcluster==6.3
 django-permissionedforms==0.1
 django-redis==5.4.0
@@ -32,6 +33,7 @@ pillow_heif==0.17.0
 psycopg2-binary==2.9.9
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
+python-fsutil==0.14.1
 pytz==2024.1
 query==0.1.4
 redis==5.0.7

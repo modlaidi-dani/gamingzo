@@ -18,7 +18,7 @@ from wagtail.images.models import Image
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.core.cache import cache
-
+from datetime import datetime
 @register_snippet 
 class Affiliation(models.Model):
     last_name=models.CharField(max_length=200,null=False)
@@ -42,6 +42,7 @@ class SectionHome(models.Model):
     )
     
 @register_snippet 
+
 class ContactForm(models.Model):
     State_CHOICES = {
         ('en-attente', 'En Attente'),
@@ -216,6 +217,11 @@ class Product_Section(StructBlock):
     header = TextBlock(blank=True)
     caption = TextBlock(blank=True)
 
+class TechnicalSpecs(StructBlock):
+    spec_name = TextBlock(blank=True)
+    spec_value = TextBlock(blank=True)
+    
+
 class Product_Galery(StructBlock):
     image = ImageChooserBlock()     
 
@@ -321,6 +327,12 @@ class Product(index.Indexed, ClusterableModel):
             filters_dict[block.value['filter_name']] = block.value['value']
         return filters_dict
 
+    def get_specs(self):
+        specs_dict = {}
+        for block in self.filters:
+            specs_dict[block.value['spec_name']] = block.value['spec_value']
+        return specs_dict
+    
     def get_sections(self):
         sections = []
         for block in self.body:
@@ -366,13 +378,18 @@ class Product(index.Indexed, ClusterableModel):
 ########
 @register_snippet
 class ProductsInCheckout(models.Model):
-    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False,related_name='product' )
+    checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = True, null=False,related_name='product' )
     product= models.ForeignKey('Product', on_delete=models.CASCADE, blank = True, null=True, default=None )
     quantity = models.IntegerField(default=1)
     unitprice = models.DecimalField(default=0, decimal_places = 2 , max_digits=10)
 
+
 @register_snippet
 class CheckoutInfo(models.Model):
+    STATUS={
+        ('WAITING','waiting'),
+        ('DONE','done')
+    }
     dispatch=models.CharField(max_length=200, default='FromStore')
     total=models.IntegerField(default=0)
     first_name=models.CharField(max_length=200, null= False)
@@ -383,7 +400,12 @@ class CheckoutInfo(models.Model):
     email=models.EmailField()
     note=models.TextField()
     date=models.DateField( null=True, auto_now_add=True)
+<<<<<<< HEAD
     
+=======
+    status=models.CharField(choices=STATUS, default='WAITING')
+
+>>>>>>> f027759d7c88aa5c092055921c47353ea28e71ce
     def __str__(self):
         return f" name: {self.first_name} {self.last_name}  to:{self.wilaya}"
 
