@@ -369,6 +369,10 @@ class ProductsInCheckout(models.Model):
 
 @register_snippet
 class CheckoutInfo(models.Model):
+    STATUS={
+        ('WAITING','waiting'),
+        ('DONE','done')
+    }
     dispatch=models.CharField(max_length=200, default='FromStore')
     total=models.IntegerField(default=0)
     first_name=models.CharField(max_length=200, null= False)
@@ -379,6 +383,8 @@ class CheckoutInfo(models.Model):
     email=models.EmailField()
     note=models.TextField()
     date=models.DateField( null=True, auto_now_add=True)
+    status=models.CharField(choices=STATUS, default='WAITING')
+
     def __str__(self):
         return f" name: {self.first_name} {self.last_name}  to:{self.wilaya}"
     
