@@ -6,6 +6,26 @@ class ContacteSerializer(serializers.ModelSerializer):
             model = ContactForm
             fields=("name","company","email","phoneNumber","Message")
             
+class EventsSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = Event
+            fields="__all__"
+            
+class BrandsSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = Brands
+            fields="__all__"
+            
+class PartnersSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = Partners
+            fields="__all__"
+            
+class FAQSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = FAQ
+            fields="__all__"
+            
 class AffiliationsSerializer(serializers.ModelSerializer):
     class Meta:
             model = Affiliation
@@ -20,7 +40,6 @@ class ProductCheckoutserialiser(serializers.ModelSerializer):
     class Meta:
             model= ProductsInCheckout
             fields="__all__"
-      
 
 class CheckouSerializer(serializers.ModelSerializer):
     product=ProductCheckoutserialiser(many=True)
@@ -33,13 +52,11 @@ class CheckouSerializer(serializers.ModelSerializer):
              raise serializers.ValidationError('put a product')
           return super().validate(data) 
 
-
-            
 class NewsletterSerializer(serializers.ModelSerializer):
     class Meta:
             model = Newsletter
             fields="__all__"
-            
+
 class SectionHomeSerializer(serializers.ModelSerializer):
     class Meta:
             model = SectionHome

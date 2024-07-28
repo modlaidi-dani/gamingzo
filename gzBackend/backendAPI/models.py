@@ -70,10 +70,9 @@ class Brands(models.Model):
 @register_snippet 
 class Partners(models.Model):
     partner_name = models.CharField(max_length=255, blank=False, null=True)
-    partner_link = models.CharField(max_length=255, blank=False, null=True)
-    logo = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
-    ) 
+    phone  = models.CharField(max_length=255, blank=False, null=True)
+    adress = models.CharField(max_length=255, blank=False, null=True)
+    logo = models.ForeignKey('wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+' ) 
 
 @register_snippet 
 class FAQ(models.Model):
@@ -227,7 +226,25 @@ class TechnicalSpecs(StructBlock):
     technical_name = TextBlock(blank=True)
     technical_value = TextBlock (blank=True)
 
+@register_snippet
+class Event(models.Model):
+    title = models.CharField(max_length=255, blank=False, null=True)
+    description = models.TextField(default='')
+    promo_text = models.TextField(default='')
+    date = models.DateField( null=True, auto_now_add=False)
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
+    )
+    gallery = StreamField([
+        ('Event_Galery', Product_Galery()),
+    ], use_json_field=True)
+    
+    def __str__(self) -> str:
+        return self.title
 
+    def getGallery(self):
+        return [block.value["image"].file.url for block in self.gallery]
+    
 @register_snippet
 class Product(index.Indexed, ClusterableModel):
     reference = models.CharField(max_length=255, blank=False, null=True)
@@ -345,8 +362,8 @@ class Product(index.Indexed, ClusterableModel):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
-########
 
+########
 @register_snippet
 class ProductsInCheckout(models.Model):
     checkout = models.ForeignKey('CheckoutInfo', on_delete=models.CASCADE, blank = False, null=False,related_name='product' )
@@ -366,9 +383,10 @@ class CheckoutInfo(models.Model):
     email=models.EmailField()
     note=models.TextField()
     date=models.DateField( null=True, auto_now_add=True)
+    
     def __str__(self):
         return f" name: {self.first_name} {self.last_name}  to:{self.wilaya}"
-    
+
 @register_snippet
 class Newsletter(models.Model):
     email=models.EmailField()
@@ -378,7 +396,7 @@ class Newsletter(models.Model):
 @receiver(post_save, sender=Product)
 def pre_save_handler(sender,instance, **kwargs):
         cache.clear()
-        
+
 @receiver(post_delete, sender=Product)
 def pre_delete_handler(sender,instance, **kwargs):
         cache.clear()

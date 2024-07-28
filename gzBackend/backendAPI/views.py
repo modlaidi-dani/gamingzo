@@ -30,7 +30,40 @@ class Contacte(viewsets.ModelViewSet):
 class Affiliation(viewsets.ModelViewSet):
     queryset=Affiliation.objects.all()
     serializer_class=AffiliationsSerializer
-
+    
+class Brands(viewsets.ModelViewSet):
+    queryset=Brands.objects.all()
+    serializer_class=BrandsSerializer
+    def list(self, request, *args, **kwargs):
+        brands = self.get_queryset()
+        brands_data = []
+        for brand in brands:
+            brands_data.append({
+                "key": brand.id,
+                "name": brand.brand_name,
+                "logo": brand.logo.file.url if brand.logo else None,
+            })  
+        return  Response (brands_data, status=status.HTTP_200_OK)
+    
+class Partners(viewsets.ModelViewSet):
+    queryset=Partners.objects.all()
+    serializer_class=PartnersSerializer
+    def list(self, request, *args, **kwargs):
+        partners = self.get_queryset()
+        partners_data = []
+        for partner in partners:
+            partners_data.append({
+                "id": partner.id,
+                "name": partner.partner_name,
+                "phone": partner.phone,
+                "adress": partner.adress,
+                "logo": partner.logo.file.url if partner.logo else None,
+            })  
+        return  Response ( partners_data,status=status.HTTP_200_OK)
+    
+class FAQ(viewsets.ModelViewSet):
+    queryset=FAQ.objects.all()
+    serializer_class=FAQSerializer
 
 class checkoutProduct(viewsets.ModelViewSet):
     queryset=ProductsInCheckout.objects.all()
@@ -53,9 +86,6 @@ class Chckout(viewsets.ModelViewSet):
                 product.checkout=data
             return Response(serializer.data,status=status.HTTP_201_CREATED)
 
-
-    
-    
 class NewsletterVienw(viewsets.ModelViewSet):
     queryset=Newsletter.objects.all()
     serializer_class=NewsletterSerializer
@@ -138,3 +168,23 @@ class HomeSection(viewsets.ModelViewSet):
                 "link": section.link
             })  
         return  Response ( sections_data,status=status.HTTP_200_OK)
+    
+class Event(viewsets.ModelViewSet):
+    queryset=Event.objects.all()
+    serializer_class=EventsSerializer
+    def list(self, request, *args, **kwargs):
+        events = self.get_queryset()
+        events_data = []
+        for event in events:
+            events_data.append({
+                "id": event.id,
+                "title": event.title,
+                "description": event.description,
+                "date": event.date,
+                "promo_text": event.promo_text,
+                "image": event.image.file.url if event.image else None,
+                "gallery": event.getGallery()
+            })  
+        return  Response ( events_data,status=status.HTTP_200_OK)
+
+
