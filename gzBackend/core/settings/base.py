@@ -46,6 +46,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
   
+    "django.contrib.humanize",  # Me
+    'wagtail.contrib.modeladmin',  # Me
+    'wagtail.contrib.settings',  # Me
+    'wagtail.contrib.styleguide',  # Me
+    "django.contrib.sitemaps",  # Me
+    'maintenance_mode',  # must be before  custom apps
     
     "corsheaders",
     "rest_framework",
@@ -62,6 +68,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
+    
+    "maintenance_mode.middleware.MaintenanceModeMiddleware",  # must be last
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -182,7 +190,32 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "http://example.com"
+WAGTAILADMIN_BASE_URL = "http://admin.com"
+
+# MAINTENANCE_MODE = None
+# MAINTENANCE_MODE_IGNORE_URLS = ('/admin')
+MAINTENANCE_MODE_STATE_BACKEND = "maintenance_mode.backends.LocalFileBackend"
+
+# alternatively it is possible to use the default storage backend
+MAINTENANCE_MODE_STATE_BACKEND = "maintenance_mode.backends.DefaultStorageBackend"
+
+# alternatively it is possible to use the static storage backend
+# make sure that STATIC_ROOT and STATIC_URL are also set
+MAINTENANCE_MODE_STATE_BACKEND = "maintenance_mode.backends.StaticStorageBackend"
+
+# alternatively it is possible to use the cache backend
+# you can use a custom cache backend by adding a `maintenance_mode` entry to `settings.CACHES`,
+# otherwise the default cache backend will be used.
+MAINTENANCE_MODE_STATE_BACKEND = "maintenance_mode.backends.CacheBackend"
+
+MAINTENANCE_MODE_IGNORE_ADMIN_SITE = True
+MAINTENANCE_MODE_IGNORE_URLS = (
+    "admin/",  
+)
+MAINTENANCE_MODE_IGNORE_SUPERUSER = True  # Allow superusers to bypass maintenance mode
+MAINTENANCE_MODE_IGNORE_STAFF = True  # Allow staff users to bypass maintenance mode
+MAINTENANCE_MODE_STATE_FILE_PATH = "maintenance_mode_state.txt"
+MAINTENANCE_MODE_TEMPLATE = "maintenance.html"
 
 #### redis
 CACHES = {

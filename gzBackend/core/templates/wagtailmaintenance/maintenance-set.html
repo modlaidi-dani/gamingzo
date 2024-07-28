@@ -1,0 +1,25 @@
+{% extends "wagtailadmin/base.html" %}
+{% block titletag %}{{ current_year }} Maintenance{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<style>
+  .field-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include "wagtailadmin/shared/header.html" with title="Maintenance" icon="chain-broken" %}
+
+<div class="nice-padding">
+  <form method = "POST" class="field-row">
+    {% csrf_token %}
+    {{ form }}
+    <input class="button" type="submit" value="Set">
+  </form>
+</div>
+{% endblock %}
