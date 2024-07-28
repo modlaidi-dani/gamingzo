@@ -32,10 +32,6 @@ class Affiliation(models.Model):
     def __str__(self) :
         return f"{self.last_name}  {self.first_name}"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 @register_snippet 
 class SectionHome(models.Model):
     title = models.CharField(max_length=255, blank=False, null=True)
@@ -272,11 +268,7 @@ class Product(index.Indexed, ClusterableModel):
         ('filterS', FilterBlock()),
     ], blank=True, use_json_field=True)
     
-<<<<<<< HEAD
-    t_specs = StreamField([
-=======
     t_specs = StreamField([ 
->>>>>>> origin/master
         ('TechnicalSpecs', TechnicalSpecs()),
     ], blank=True, use_json_field=True)
     
