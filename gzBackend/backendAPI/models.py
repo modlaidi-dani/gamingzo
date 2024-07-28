@@ -32,11 +32,6 @@ class Affiliation(models.Model):
         return f"{self.last_name}  {self.first_name}"
 
 
-
-
-
-
-
 @register_snippet 
 class SectionHome(models.Model):
     title = models.CharField(max_length=255, blank=False, null=True)
@@ -46,8 +41,8 @@ class SectionHome(models.Model):
         'wagtailimages.Image', on_delete=models.SET_NULL, null=True, related_name='+'
     )
     
-
 @register_snippet 
+
 class ContactForm(models.Model):
     State_CHOICES = {
         ('en-attente', 'En Attente'),
@@ -221,6 +216,11 @@ class Product_Section(StructBlock):
     header = TextBlock(blank=True)
     caption = TextBlock(blank=True)
 
+class TechnicalSpecs(StructBlock):
+    spec_name = TextBlock(blank=True)
+    spec_value = TextBlock(blank=True)
+    
+
 class Product_Galery(StructBlock):
     image = ImageChooserBlock()     
 
@@ -262,6 +262,11 @@ class Product(index.Indexed, ClusterableModel):
     filters = StreamField([
         ('filterS', FilterBlock()),
     ], blank=True, use_json_field=True)
+    
+    t_specs = StreamField([
+        ('TechnicalSpecs', TechnicalSpecs()),
+    ], blank=True, use_json_field=True)
+    
     def __str__(self):
         return f"{self.reference}  {self.designation}"
     #------------------------- end of fields 
@@ -281,6 +286,7 @@ class Product(index.Indexed, ClusterableModel):
             FieldPanel('promo'),
             FieldPanel('config'),
             FieldPanel('body'),
+            FieldPanel('t_specs'),
         ], heading="Status"),
         MultiFieldPanel([
             FieldPanel('support_page_link'),
@@ -302,6 +308,12 @@ class Product(index.Indexed, ClusterableModel):
             filters_dict[block.value['filter_name']] = block.value['value']
         return filters_dict
 
+    def get_specs(self):
+        specs_dict = {}
+        for block in self.filters:
+            specs_dict[block.value['spec_name']] = block.value['spec_value']
+        return specs_dict
+    
     def get_sections(self):
         sections = []
         for block in self.body:
